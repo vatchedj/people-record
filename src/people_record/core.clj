@@ -6,6 +6,8 @@
   (:gen-class))
 
 (defn- people-from-file
+  "Returns a vector of People records
+  from the provided file."
   [file-path]
   (with-open [rdr (io/reader file-path)]
     (->> (line-seq rdr)
@@ -13,6 +15,8 @@
          (reduce conj []))))
 
 (defn- people-from-files
+  "Returns a vector of People records
+  from the provided files."
   [file-paths]
   (->> file-paths
        (mapcat people-from-file)))

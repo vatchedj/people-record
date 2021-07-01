@@ -23,6 +23,7 @@
               date-of-birth)))
 
 (defn sample-people
+  "Creates sample People records."
   ([]
    (sample-people (rand max-random-record-count)))
   ([num]
