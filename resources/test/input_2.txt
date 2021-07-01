@@ -1,0 +1,3 @@
+Stanley, Jack, Male, Indigo, 6/30/1929
+Hogan, Logan, Male, Chocolate, 6/30/1987
+Burt, Levi, Male, Desert, 6/30/2008

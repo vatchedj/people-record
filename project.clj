@@ -9,7 +9,7 @@
                  [talltale "0.5.4"]]
   :plugins [[lein-cloverage "1.2.2"]
             [lein-ring "0.12.5"]]
-  :main people-record.core/foo
+  :main people-record.core/run
   :ring {:handler people-record.handler/app}
   :profiles
   {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]

@@ -1,13 +1,20 @@
 (ns people-record.person
   (:require [clojure.string :as str]
-            [people-record.core :as core]
-            [java-time :as t]))
+            [java-time :as t])
+  (:import (java.time LocalDate)))
+
+;TODO: Need to determine the input date format
+(def input-date-format "M/d/yyyy")
+
+(defn date-from-string
+  [date-string]
+  (t/local-date input-date-format date-string))
 
 (defrecord Person [LastName
                    FirstName
                    Gender
                    FavoriteColor
-                   DateOfBirth])
+                   ^LocalDate DateOfBirth])
 
 (defn person-with-date-string
   "Returns a person record with the DateOfBirth
@@ -20,9 +27,9 @@
 (defn separator
   "Returns the separator used in the provided input line (string)."
   [record-string]
-  (cond (str/includes? record-string " | ") " | "
-        (str/includes? record-string ", ") ", "
-        :else " "))
+  (cond (str/includes? record-string " | ") #" \| "
+        (str/includes? record-string ", ") #", "
+        :else #" "))
 
 (defn update-last
   "Updates the last item in the collection
@@ -34,8 +41,7 @@
 (defn person
   "Returns a Person record for the provided input line (string)."
   [record-string]
-  (let [pattern (-> (separator record-string)
-                    (re-pattern))
+  (let [pattern (separator record-string)
         values (-> (str/split record-string pattern)
-                   (update-last #(t/local-date core/input-date-format %)))]
+                   (update-last date-from-string))]
     (apply ->Person values)))

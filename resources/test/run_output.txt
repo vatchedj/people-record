@@ -1,0 +1,36 @@
+People sorted by gender (females first), then by last name, ascending:
+Blackwell Ellie Female Cobalt 6/30/1984
+Mosley Piper Female Mauve 6/30/2006
+Perez Kylie Female Orchid 6/30/1915
+Ruiz Nevaeh Female Spring-green 6/30/1964
+Barron Gavin Male Green 6/30/2004
+Burt Levi Male Desert 6/30/2008
+Hogan Logan Male Chocolate 6/30/1987
+Mills Grayson Male Plum 6/30/2019
+Stanley Jack Male Indigo 6/30/1929
+
+------------------------
+
+People sorted by birth date, ascending:
+Perez Kylie Female Orchid 6/30/1915
+Stanley Jack Male Indigo 6/30/1929
+Ruiz Nevaeh Female Spring-green 6/30/1964
+Blackwell Ellie Female Cobalt 6/30/1984
+Hogan Logan Male Chocolate 6/30/1987
+Barron Gavin Male Green 6/30/2004
+Mosley Piper Female Mauve 6/30/2006
+Burt Levi Male Desert 6/30/2008
+Mills Grayson Male Plum 6/30/2019
+
+------------------------
+
+People sorted by last name, descending:
+Stanley Jack Male Indigo 6/30/1929
+Ruiz Nevaeh Female Spring-green 6/30/1964
+Perez Kylie Female Orchid 6/30/1915
+Mosley Piper Female Mauve 6/30/2006
+Mills Grayson Male Plum 6/30/2019
+Hogan Logan Male Chocolate 6/30/1987
+Burt Levi Male Desert 6/30/2008
+Blackwell Ellie Female Cobalt 6/30/1984
+Barron Gavin Male Green 6/30/2004

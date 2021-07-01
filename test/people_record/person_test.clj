@@ -1,23 +1,8 @@
 (ns people-record.person-test
-  (:require [clojure.string :as str]
-            [clojure.test :refer :all]
+  (:require [clojure.test :refer :all]
             [java-time :as t]
-            [people-record.core :as core]
-            [people-record.person :refer [->Person] :as p]
-            [talltale.core :as gen]))
-
-;TODO: Move this function?
-(defn sample-person
-  "Generates a sample Person record."
-  ([]
-   (let [{:keys [last-name first-name sex date-of-birth]} (gen/person)]
-     (sample-person last-name first-name sex (gen/color) date-of-birth)))
-  ([last-name first-name sex favorite-color date-of-birth]
-   (->Person last-name
-             first-name
-             (-> sex name (str/capitalize))
-             (str/capitalize favorite-color)
-             date-of-birth)))
+            [people-record.generator-test :refer [sample-person]]
+            [people-record.person :refer [->Person] :as p]))
 
 (deftest person-with-date-string-test
   (let [person (sample-person)]
@@ -26,17 +11,23 @@
              (p/person-with-date-string person date-format))))))
 
 (deftest separator-test
-  (is (= " | "
-         (p/separator "Townsend | Melanie | Female | Orchid | 6/29/2012")))
+  (is (= " \\| "
+         (str (p/separator "Townsend | Melanie | Female | Orchid | 6/29/2012"))))
   (is (= ", "
-         (p/separator "Terrell, Gabriella, Female, Ivory, 6/29/1968")))
+         (str (p/separator "Terrell, Gabriella, Female, Ivory, 6/29/1968"))))
   (is (= " "
-         (p/separator "Jefferson Aaron Male Gray 6/29/2020"))))
+         (str (p/separator "Jefferson Aaron Male Gray 6/29/2020")))))
 
 (deftest person-test
-  (is (= (->Person "Jefferson"
-                   "Aaron"
-                   "Male"
-                   "Gray"
-                   (t/local-date core/input-date-format  "6/29/2020"))
-         (p/person "Jefferson Aaron Male Gray 6/29/2020"))))
+  (testing "Pipe ' | ' separator"
+    (is (= (->Person "Perez" "Kylie" "Female" "Orchid"
+                     (t/local-date p/input-date-format "6/30/1915"))
+           (p/person "Perez | Kylie | Female | Orchid | 6/30/1915"))))
+  (testing "Comma ', ' separator"
+    (is (= (->Person "Stanley" "Jack" "Male" "Indigo"
+                     (t/local-date p/input-date-format "6/30/1929"))
+           (p/person "Stanley, Jack, Male, Indigo, 6/30/1929"))))
+  (testing "Space ' ' separator"
+    (is (= (->Person "Jefferson" "Aaron" "Male" "Gray"
+                     (t/local-date p/input-date-format "6/29/2020"))
+           (p/person "Jefferson Aaron Male Gray 6/29/2020")))))
