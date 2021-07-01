@@ -30,6 +30,8 @@ Pretty self-explanatory. Run the command with one or more input files and get th
 
 ### API
 
+The API runs on localhost:3000
+
 #### POST /records
 
 Post a JSON paylod like the one below:
@@ -49,6 +51,10 @@ Returns the records sorted by birthdate, ascending.
 #### GET /records/name
 
 Returns the records sorted by last name, descending.
+
+## Code Coverage
+
+    lein cloverage
 
 ## License
 
