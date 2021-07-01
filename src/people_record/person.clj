@@ -3,8 +3,8 @@
             [java-time :as t])
   (:import (java.time LocalDate)))
 
-;TODO: Need to determine the input date format
 (def input-date-format "M/d/yyyy")
+(def output-date-format "M/d/yyyy")
 
 (defn date-from-string
   [date-string]
@@ -23,6 +23,14 @@
   [person date-format]
   (update person :DateOfBirth
           #(t/format date-format %)))
+
+(defn person-map
+  "Returns a simple representation of a person
+  (map of strings) for easy transmission over HTTP."
+  [person]
+  (as-> person $
+        (person-with-date-string $ output-date-format)
+        (into {} $)))
 
 (defn separator
   "Returns the separator used in the provided input line (string)."
